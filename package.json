@@ -6,6 +6,7 @@
   "scripts": {
     "clean": "node node_modules/rimraf/bin.js build",
     "ts": "rimraf build && tsc -w",
+    "compile": "rimraf build && tsc",
     "eslint": "node ./node_modules/eslint/bin/eslint.js --quiet --ext .ts --config ./.eslintrc.js ./src ./tests",
     "fix": "node ./node_modules/eslint/bin/eslint.js --fix --quiet --ext .ts --config ./.eslintrc.js ./src ./tests",
     "url": "url_gen ts -e http://www.mobiledevelopmentfht360web.com/Definition/UrlHelpers -l ./api_web -o ./",
