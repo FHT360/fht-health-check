@@ -1,15 +1,13 @@
 import test from "ava";
-import { expect } from "chai";
 import { AspNetWebApiError, getAnonymousClient } from "../src/utils";
-import * as cheerio from "cheerio";
 import { assert } from "chai";
 import _ from "lodash";
-import pMap from "p-map";
 import { AxiosError } from "axios";
 import { WEB_ROOT } from "../src/hosts";
-import { CONCURRENCY } from "../src/constants";
 import fs from "fs-extra";
 import path from "path";
+import url from "url";
+import querystring from "querystring";
 
 const httpClient = getAnonymousClient(WEB_ROOT);
 const resolve = (p: string) => path.join(process.cwd(), p);
@@ -23,7 +21,25 @@ for (const n of ["home", "products", "topicposts"]) {
     us.forEach((u) => urls.add(u));
 }
 
-for (const url of Array.from(urls)) {
+function makeUrlDedupTag(link: string, compactQueryKeys = ["Q", "companyId"], ignoreQueryKeys = ["stat_ctx"]): string {
+    const p = url.parse(link.toLowerCase());
+    const pathName = p.pathname || "";
+    const q = querystring.parse(p.query as string);
+    for (const ignoreKey of ignoreQueryKeys) {
+        delete q[ignoreKey];
+    }
+    for (const [key, value] of Object.entries(q)) {
+        if (compactQueryKeys.includes(key)) {
+            q[key] = "*";
+        }
+    }
+    return pathName + querystring.stringify(q);
+}
+
+const dedupUrls = Object.values(_.groupBy(Array.from(urls), makeUrlDedupTag)).map((us) => us[0]);
+console.log("TOTAL", urls.size, "urls, after dedup: ", dedupUrls.length);
+
+for (const url of dedupUrls) {
     test(`HTTP GET ${url}`, async (t) => {
         try {
             const res = await httpClient.get(url);
