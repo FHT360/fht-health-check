@@ -22,14 +22,13 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
+      - name: install and compile ts
         run: |
           npm install 
           npm run compile
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          npm run crawl
-          npm run ava
+      - name: crawl urls
+        run: npm run crawl
+
+      - name: avajs tests
+        run: npm run ava
