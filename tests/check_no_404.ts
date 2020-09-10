@@ -14,6 +14,8 @@ const resolve = (p: string) => path.join(process.cwd(), p);
 
 const urls = new Set<string>();
 
+console.log("TEST_SECRET", process.env.TEST_SECRET);
+
 for (const n of ["home", "products", "topicposts"]) {
     const p = resolve(`./build/${n}.json`);
     assert(fs.existsSync(p), `FILE DOES NOT EXIST: ${p}`);

@@ -32,4 +32,6 @@ jobs:
         run: npm run crawl
 
       - name: avajs tests
+        env:
+          TEST_SECRET: ${{ secrets.TEST_SECRET }}
         run: npm run ava
