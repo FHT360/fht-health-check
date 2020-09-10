@@ -14,7 +14,8 @@ const resolve = (p: string) => path.join(process.cwd(), p);
 
 const urls = new Set<string>();
 
-console.log("TEST_SECRET", process.env.TEST_SECRET);
+const secret = process.env.TEST_SECRET || "SECRET NOT FOUND";
+console.log("TEST_SECRET", secret.length, _.camelCase(secret));
 
 for (const n of ["home", "products", "topicposts"]) {
     const p = resolve(`./build/${n}.json`);
