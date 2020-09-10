@@ -1,5 +1,5 @@
 import * as cheerio from "cheerio";
-import axios, { AxiosInstance, AxiosError } from "axios";
+import axios, { AxiosInstance, AxiosError, AxiosRequestConfig } from "axios";
 import assert from "assert";
 import { AXIOS_PROXY } from "./hosts";
 
@@ -14,9 +14,8 @@ export class AspNetWebApiError extends Error {
     }
 }
 
-export function getAnonymousClient(host: string): AxiosInstance {
-    const instance = axios.create({
-        baseURL: host,
+export function getAnonymousClient(host?: string): AxiosInstance {
+    const config: AxiosRequestConfig = {
         headers: {
             "User-Agent": "FHT2BOT/V1",
         },
@@ -25,12 +24,17 @@ export function getAnonymousClient(host: string): AxiosInstance {
         validateStatus(status) {
             return status >= 200 && status < 400;
         },
-    });
+    };
+    if (host) {
+        config.baseURL = host;
+    }
+    const instance = axios.create(config);
 
     instance.interceptors.response.use(
         (value) => value,
         (error) => {
             const err = error as AxiosError<unknown>;
+            assert(err.isAxiosError, "should be isAxiosError");
             assert(err.response, `should be AxiosError but is ${typeof err}: ${err}`);
             const body = err.response!.data as string;
             if (body.includes("Exception Details:")) {
