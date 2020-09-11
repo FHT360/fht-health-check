@@ -16,7 +16,7 @@ commander
 const urlPath = commander.path;
 const savedPath = commander.savedPath;
 
-async function crawl_urls(urlPath: string, savedPath: string, maxPage = 5) {
+async function crawl_urls(urlPath: string, savedPath: string, maxPage = 3) {
     const u = new URL(urlPath);
     const pathAndQuery = u.pathname + u.search;
     const httpClient = await getAnonymousClient(u.origin);
