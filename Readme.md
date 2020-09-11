@@ -15,3 +15,8 @@
 [![https://github.com/foresightyj/fht-web-vue/workflows/Eslint/badge.svg](https://github.com/foresightyj/fht-web-vue/workflows/Eslint/badge.svg)](https://github.com/foresightyj/fht-web-vue/actions?query=workflow%3AEslint)
 
 [![https://github.com/foresightyj/fht-web-vue/workflows/VueTypeCheck/badge.svg](https://github.com/foresightyj/fht-web-vue/workflows/VueTypeCheck/badge.svg)](https://github.com/foresightyj/fht-web-vue/actions?query=workflow%3AVueTypeCheck)
+
+
+# references
+
+https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idservices

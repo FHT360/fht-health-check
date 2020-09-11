@@ -15,6 +15,7 @@
     "fix": "node ./node_modules/eslint/bin/eslint.js --fix --quiet --ext .ts --config ./.eslintrc.js ./src ./tests",
     "url": "url_gen ts -e http://www.mobiledevelopmentfht360web.com/Definition/UrlHelpers -l ./api_web -o ./",
     "ava": "ava build/tests/**/*.js",
+    "ava:tap": "ava build/tests/**/*.js --tap | tap-summary",
     "ava:yj": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 PROXY=http://192.168.0.196:8888 ava build/tests/**/*.js --verbose --concurrency 1",
     "yj": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 PROXY=http://192.168.0.196:8888 ava --verbose --fail-fast --concurrency 1",
     "url_local": "url_gen ts -e http://localhost:8001/Definition/UrlHelpers -o ./",
@@ -47,6 +48,7 @@
     "p-map": "^4.0.0",
     "querystring": "^0.2.0",
     "rimraf": "^3.0.2",
+    "tap-summary": "^4.0.0",
     "typescript": "^4.0.2",
     "url": "^0.11.0"
   },

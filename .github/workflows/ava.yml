@@ -34,4 +34,4 @@ jobs:
       - name: avajs tests
         env:
           TEST_SECRET: ${{ secrets.TEST_SECRET }}
-        run: npm run ava
+        run: npm run ava:tap
