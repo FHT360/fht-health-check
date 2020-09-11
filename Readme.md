@@ -4,7 +4,7 @@
 
 # FHT.Web
 
-[![https://github.com/foresightyj/FHT.Web/workflows/StyleLint/badge.svg](https://github.com/foresightyj/FHT.Web/workflows/StyleLint/badge.svg)](https://github.com/foresightyj/FHT.Web/actions?query=workflow%3AStyleLint)
+[![https://github.com/foresightyj/FHT.Web/workflows/Stylelint/badge.svg](https://github.com/foresightyj/FHT.Web/workflows/Stylelint/badge.svg)](https://github.com/foresightyj/FHT.Web/actions?query=workflow%3AStyleLint)
 
 [![https://github.com/foresightyj/FHT.Web/workflows/Eslint/badge.svg](https://github.com/foresightyj/FHT.Web/workflows/Eslint/badge.svg)](https://github.com/foresightyj/FHT.Web/actions?query=workflow%3AEslint)
 
