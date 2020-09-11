@@ -1,6 +1,6 @@
 # fht_health_check
 
-[![https://github.com/foresightyj/fht_health_check/workflows/CI/badge.svg](https://github.com/foresightyj/fht_health_check/workflows/CI/badge.svg)](https://github.com/foresightyj/fht_health_check/actions?CI=workflow%3ACI)
+[![https://github.com/foresightyj/fht_health_check/workflows/Health/badge.svg](https://github.com/foresightyj/fht_health_check/workflows/CI/badge.svg)](https://github.com/foresightyj/fht_health_check/actions?CI=workflow%3AHealth)
 
 # FHT.Web
 
