@@ -2,11 +2,11 @@
 
 [![https://github.com/foresightyj/fht_health_check/workflows/Health/badge.svg](https://github.com/foresightyj/fht_health_check/workflows/Health/badge.svg)](https://github.com/foresightyj/fht_health_check/actions?query=workflow%3AHealth)
 
-# FHT.Web
+# FHT.Web.SVN
 
-[![https://github.com/foresightyj/FHT.Web/workflows/Stylelint/badge.svg](https://github.com/foresightyj/FHT.Web/workflows/Stylelint/badge.svg)](https://github.com/foresightyj/FHT.Web/actions?query=workflow%3AStyleLint)
+[![https://github.com/foresightyj/FHT.Web.SVN/workflows/Stylelint/badge.svg](https://github.com/foresightyj/FHT.Web.SVN/workflows/Stylelint/badge.svg)](https://github.com/foresightyj/FHT.Web.SVN/actions?query=workflow%3AStyleLint)
 
-[![https://github.com/foresightyj/FHT.Web/workflows/Eslint/badge.svg](https://github.com/foresightyj/FHT.Web/workflows/Eslint/badge.svg)](https://github.com/foresightyj/FHT.Web/actions?query=workflow%3AEslint)
+[![https://github.com/foresightyj/FHT.Web.SVN/workflows/Eslint/badge.svg](https://github.com/foresightyj/FHT.Web.SVN/workflows/Eslint/badge.svg)](https://github.com/foresightyj/FHT.Web.SVN/actions?query=workflow%3AEslint)
 
 # fht-web-vue
 
@@ -20,3 +20,5 @@
 # references
 
 https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idservices
+
+https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/configuring-notifications
