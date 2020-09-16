@@ -1,68 +1,62 @@
 {
-  "name": "fht-health-check",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "clean": "node node_modules/rimraf/bin.js build",
-    "ts": "rimraf build && tsc -w",
-    "compile": "rimraf build && tsc",
-    "eslint": "node ./node_modules/eslint/bin/eslint.js --quiet --ext .ts --config ./.eslintrc.js ./src ./tests",
-    "crawl:home": "node build/src/crawl_urls -p http://feige.fht360.cn/ -o build/home.json",
-    "crawl:products": "node build/src/crawl_urls -p http://feige.fht360.cn/list -o build/products.json",
-    "crawl:topicposts": "node build/src/crawl_urls -p http://topic.fht360.cn/fuwu -o build/topicposts.json",
-    "crawl": "npm-run-all crawl:home crawl:products crawl:topicposts",
-    "fix": "node ./node_modules/eslint/bin/eslint.js --fix --quiet --ext .ts --config ./.eslintrc.js ./src ./tests",
-    "url": "url_gen ts -e http://www.mobiledevelopmentfht360web.com/Definition/UrlHelpers -l ./api_web -o ./",
-    "ava": "ava build/tests/**/*.js",
-    "ava:tap": "ava build/tests/**/*.js --tap",
-    "ava:tap2": "ava build/tests/**/*.js --tap | tap-summary",
-    "ava:yj": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 PROXY=http://192.168.0.196:8888 ava build/tests/**/*.js --verbose --concurrency 1",
-    "yj": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 PROXY=http://192.168.0.196:8888 ava --verbose --fail-fast --concurrency 1",
-    "url_local": "url_gen ts -e ettp://localhost:8001/Definition/UrlHelpers -o ./",
-    "swagger": "npm-run-all swagger:api swagger:web swagger:agency",
-    "swagger:api": "swagger ts request -e http://192.168.0.223:8000/swagger/docs/v1 -o ./api.ts",
-    "swagger:web": "swagger ts request -e http://www.mobiledevelopmentfht360web.com/swagger/docs/v1 -o ./api_web.ts",
-    "postswagger": "npm run url",
-    "postswagger_local": "npm run url_local"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/chai": "^4.2.12",
-    "@types/cheerio": "^0.22.21",
-    "@types/fs-extra": "^9.0.1",
-    "@types/lodash": "^4.14.161",
-    "ava": "^3.12.1",
-    "axios": "^0.20.0",
-    "chai": "^4.2.0",
-    "chalk": "^4.1.0",
-    "cheerio": "^1.0.0-rc.3",
-    "commander": "^6.1.0",
-    "cross-env": "^7.0.2",
-    "fht-code-gen": "^1.0.20",
-    "fht-swagger-cli": "^1.0.68",
-    "fs-extra": "^9.0.1",
-    "lodash": "^4.17.20",
-    "npm-run-all": "^4.1.5",
-    "p-map": "^4.0.0",
-    "querystring": "^0.2.0",
-    "rimraf": "^3.0.2",
-    "tap-summary": "^4.0.0",
-    "typescript": "^4.0.2",
-    "url": "^0.11.0"
-  },
-  "ava": {
-    "files": [
-      "build/tests/**/*.js"
-    ],
-    "source": [
-      "build/**/*.js"
-    ],
-    "verbose": true,
-    "timeout": "120s",
-    "concurrency": 5,
-    "failWithoutAssertions": false
-  }
+    "name": "fht-health-check",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "clean": "node node_modules/rimraf/bin.js build",
+        "ts": "rimraf build && tsc -w",
+        "compile": "rimraf build && tsc",
+        "eslint": "node ./node_modules/eslint/bin/eslint.js --quiet --ext .ts --config ./.eslintrc.js ./src ./tests",
+        "crawl:home": "node build/src/crawl_urls -p http://feige.fht360.cn/ -o build/home.json",
+        "crawl:products": "node build/src/crawl_urls -p http://feige.fht360.cn/list -o build/products.json",
+        "crawl:topicposts": "node build/src/crawl_urls -p http://topic.fht360.cn/fuwu -o build/topicposts.json",
+        "crawl": "npm-run-all crawl:home crawl:products crawl:topicposts",
+        "fix": "node ./node_modules/eslint/bin/eslint.js --fix --quiet --ext .ts --config ./.eslintrc.js ./src ./tests",
+        "ava": "ava build/tests/**/*.js",
+        "ava:tap": "ava build/tests/**/*.js --tap",
+        "ava:404": "ava build/tests/check_no_404.js --tap",
+        "ava:tap2": "ava build/tests/**/*.js --tap | tap-summary",
+        "ava:yj": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 PROXY=http://192.168.0.196:8888 ava build/tests/**/*.js --verbose --concurrency 1",
+        "yj": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 PROXY=http://192.168.0.196:8888 ava --verbose --fail-fast --concurrency 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/chai": "^4.2.12",
+        "@types/cheerio": "^0.22.21",
+        "@types/fs-extra": "^9.0.1",
+        "@types/lodash": "^4.14.161",
+        "ava": "^3.12.1",
+        "axios": "^0.20.0",
+        "chai": "^4.2.0",
+        "chalk": "^4.1.0",
+        "cheerio": "^1.0.0-rc.3",
+        "commander": "^6.1.0",
+        "cross-env": "^7.0.2",
+        "fht-code-gen": "^1.0.20",
+        "fht-swagger-cli": "^1.0.68",
+        "fs-extra": "^9.0.1",
+        "lodash": "^4.17.20",
+        "npm-run-all": "^4.1.5",
+        "p-map": "^4.0.0",
+        "querystring": "^0.2.0",
+        "rimraf": "^3.0.2",
+        "tap-summary": "^4.0.0",
+        "typescript": "^4.0.2",
+        "url": "^0.11.0"
+    },
+    "ava": {
+        "files": [
+            "build/tests/**/*.js"
+        ],
+        "source": [
+            "build/**/*.js"
+        ],
+        "verbose": true,
+        "timeout": "120s",
+        "concurrency": 5,
+        "failWithoutAssertions": false
+    }
 }

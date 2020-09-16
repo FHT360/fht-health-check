@@ -1,9 +1,18 @@
 import assert from "assert";
 import { AxiosProxyConfig } from "axios";
+import { ApplicationEnvEnum, APP_ENV, PROXY_URL } from "./env";
 
-export const PROXY_URL = process.env.PROXY as string | undefined;
-
-export const WEB_ROOT = "http://feige.fht360.cn/";
+export const WEB_ROOT = (() => {
+    if (APP_ENV === ApplicationEnvEnum.Development) {
+        return "http://www.developmentfht360web.com/";
+    } else if (APP_ENV === ApplicationEnvEnum.MobileDevelopment) {
+        return "http://www.mobiledevelopmentfht360web.com/";
+    } else if (APP_ENV === ApplicationEnvEnum.Staging) {
+        return "http://www.stagingfht360web.com/";
+    } else if (APP_ENV === ApplicationEnvEnum.Production) {
+        return "http://feige.fht360.cn/";
+    }
+})();
 
 export const AXIOS_PROXY = (() => {
     let proxy: AxiosProxyConfig | false = false;
