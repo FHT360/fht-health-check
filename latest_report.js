@@ -12,9 +12,7 @@ commander.option("-s, --strip").parse(process.argv);
 const strip = !!commander.strip;
 
 const baseURL = "http://192.168.0.229:8081";
-const http = axios.create({
-    baseURL,
-});
+const http = axios.create({ baseURL });
 
 /**
  * @typedef {{dag_id:string, dag_run_url:string, execution_date:string, start_date:string}} Dag
