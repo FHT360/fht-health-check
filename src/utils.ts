@@ -3,6 +3,12 @@ import axios, { AxiosInstance, AxiosError, AxiosRequestConfig } from "axios";
 import assert from "assert";
 import { AXIOS_PROXY } from "./hosts";
 
+export enum PageTag {
+    home = "home",
+    products = "products",
+    topicposts = "topicposts",
+}
+
 export class AspNetWebApiError extends Error {
     name = "AspNetWebApiError";
     serverExceptionMessage: string;
@@ -42,7 +48,12 @@ export function getAnonymousClient(host?: string): AxiosInstance {
                 const des = $("table[bgcolor]").last().text().replace("[No relevant source lines]", "").trim();
                 if (des) {
                     const msg = des.split("\n", 1)[0];
-                    return Promise.reject(new AspNetWebApiError(msg, des));
+                    const req = err.request as { method: string; path: string };
+                    let additional = "";
+                    if (req?.method) {
+                        additional = `: ${req.method} ${req.path}`;
+                    }
+                    return Promise.reject(new AspNetWebApiError(msg, des) + additional);
                 }
             }
             return Promise.reject(err);

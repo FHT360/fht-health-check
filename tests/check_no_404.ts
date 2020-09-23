@@ -1,5 +1,5 @@
 import test from "ava";
-import { AspNetWebApiError, getAnonymousClient } from "../src/utils";
+import { AspNetWebApiError, getAnonymousClient, PageTag } from "../src/utils";
 import { assert } from "chai";
 import _ from "lodash";
 import { AxiosError } from "axios";
@@ -8,6 +8,7 @@ import fs from "fs-extra";
 import path from "path";
 import url from "url";
 import querystring from "querystring";
+import { APP_ENV } from "../src/env";
 
 const httpClient = getAnonymousClient(WEB_ROOT);
 const resolve = (p: string) => path.join(process.cwd(), p);
@@ -17,11 +18,12 @@ const urls = new Set<string>();
 const secret = process.env.TEST_SECRET || "SECRET NOT FOUND";
 console.log("TEST_SECRET", secret.length, _.camelCase(secret));
 
-for (const n of ["home", "products", "topicposts"]) {
-    const p = resolve(`./build/${n}.json`);
-    assert(fs.existsSync(p), `FILE DOES NOT EXIST: ${p}`);
-    const us = JSON.parse(fs.readFileSync(p, { encoding: "utf-8" })) as string[];
-    us.forEach((u) => urls.add(u));
+for (const n of Object.values(PageTag)) {
+    const p = resolve(`./build/${APP_ENV}/${n}.json`);
+    if (fs.existsSync(p)) {
+        const us = JSON.parse(fs.readFileSync(p, { encoding: "utf-8" })) as string[];
+        us.forEach((u) => urls.add(u));
+    }
 }
 
 function makeUrlDedupTag(link: string, compactQueryKeys = ["Q", "companyId"], ignoreQueryKeys = ["stat_ctx"]): string {

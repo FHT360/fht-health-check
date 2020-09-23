@@ -4,14 +4,15 @@ import { ApplicationEnvEnum, APP_ENV, PROXY_URL } from "./env";
 
 export const WEB_ROOT = (() => {
     if (APP_ENV === ApplicationEnvEnum.Development) {
-        return "http://www.developmentfht360web.com/";
+        return "http://www.developmentfht360web.com";
     } else if (APP_ENV === ApplicationEnvEnum.MobileDevelopment) {
-        return "http://www.mobiledevelopmentfht360web.com/";
+        return "http://www.mobiledevelopmentfht360web.com";
     } else if (APP_ENV === ApplicationEnvEnum.Staging) {
-        return "http://www.stagingfht360web.com/";
+        return "http://www.stagingfht360web.com";
     } else if (APP_ENV === ApplicationEnvEnum.Production) {
-        return "http://feige.fht360.cn/";
+        return "http://feige.fht360.cn";
     }
+    throw new Error("impossible env: " + APP_ENV);
 })();
 
 export const AXIOS_PROXY = (() => {
