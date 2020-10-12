@@ -30,6 +30,7 @@
     "ava:yj": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 PROXY=http://192.168.0.196:8888 ava build/tests/**/*.js --verbose --concurrency 1",
     "health:md": "npm run crawl:md && npm run ava:404:md",
     "health:staging": "npm run crawl:staging && npm run ava:404:staging",
+    "health:prod": "npm run crawl:prod && npm run ava:404:prod",
     "yj": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 PROXY=http://192.168.0.196:8888 ava --verbose --fail-fast --concurrency 1"
   },
   "keywords": [],
