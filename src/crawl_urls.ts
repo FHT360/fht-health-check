@@ -42,7 +42,7 @@ async function crawl_urls(tag: PageTag, maxPage = MAX_PAGE) {
     assert(typeof body === "string", "body is not string");
     const $ = cheerio.load(body);
 
-    function extractPageLinks($: CheerioStatic): string[] {
+    function extractPageLinks($: cheerio.Root): string[] {
         const pageLinks = $(".fht-pagination__content a[href]")
             .map((idx, el) => {
                 return $(el).attr("href");
@@ -51,7 +51,7 @@ async function crawl_urls(tag: PageTag, maxPage = MAX_PAGE) {
         return pageLinks;
     }
     const pageLinks = extractPageLinks($);
-    function extractLinks($: CheerioStatic): string[] {
+    function extractLinks($: cheerio.Root): string[] {
         const hrefs = $("a[href]")
             .map((idx, el) => {
                 let href = $(el).attr("href");
