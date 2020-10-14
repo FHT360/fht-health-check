@@ -48,15 +48,3 @@ jobs:
         env:
           TEST_SECRET: ${{ secrets.TEST_SECRET }}
         run: npm run ava:tap
-
-      - name: Sending Dingtalk Message
-        uses: x-actions/dingtalk@master
-        env:
-          DINGTALK_ACCESS_TOKEN: ${{ secrets.DINGTALK_ACCESS_TOKEN }}
-          DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
-          MSGTYPE: markdown
-          TITLE: "x-actions dingtalk message"
-          TEXT: |
-            # Noti
-            > Build Github Action Done.
-            > ^_^
