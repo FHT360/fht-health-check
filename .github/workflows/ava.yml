@@ -42,9 +42,9 @@ jobs:
           npm run compile
 
       - name: crawl urls
-        run: npm run crawl
+        run: npm run crawl:prod
 
       - name: avajs tests
         env:
           TEST_SECRET: ${{ secrets.TEST_SECRET }}
-        run: npm run ava:tap
+        run: npm run health:prod
