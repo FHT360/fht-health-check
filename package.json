@@ -6,7 +6,7 @@
     "scripts": {
         "clean": "node node_modules/rimraf/bin.js build",
         "ts": "rimraf build && tsc -w",
-        "prepare": "svn update .",
+        "prepare": "svn update . && cnpm i",
         "compile": "rimraf build && tsc",
         "eslint": "node ./node_modules/eslint/bin/eslint.js --quiet --ext .ts --config ./.eslintrc.js ./src ./tests",
         "crawl:home": "node build/src/crawl_urls -t home",
